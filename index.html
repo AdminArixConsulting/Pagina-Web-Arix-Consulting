@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arix Consulting – CRM & Business Growth Solutions</title>
+  <meta name="description" content="Arix Consulting – Soluciones CRM para empresas que quieren crecer. Automatización, gestión de clientes y crecimiento inteligente." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue-dark:   #0D2B4E;
+      --blue:        #1565C0;
+      --blue-light:  #1E88E5;
+      --gold:        #C9A84C;
+      --gold-light:  #E6C76A;
+      --white:       #FFFFFF;
+      --gray-50:     #F8FAFC;
+      --gray-100:    #F1F5F9;
+      --gray-400:    #94A3B8;
+      --gray-600:    #475569;
+      --gray-900:    #0F172A;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--white);
+      color: var(--gray-900);
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 6%;
+      height: 68px;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(201,168,76,0.2);
+      box-shadow: 0 2px 20px rgba(13,43,78,0.08);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, var(--blue-dark), var(--blue-light));
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      font-weight: 800;
+      font-size: 18px;
+      letter-spacing: -1px;
+    }
+
+    .logo-text {
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: var(--blue-dark);
+      letter-spacing: -0.3px;
+    }
+
+    .logo-text span { color: var(--gold); }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--gray-600);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--blue); }
+
+    .lang-btn {
+      background: none;
+      border: 1.5px solid var(--gold);
+      color: var(--gold);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: inherit;
+      letter-spacing: 0.5px;
+    }
+
+    .lang-btn:hover {
+      background: var(--gold);
+      color: var(--white);
+    }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 100px 6% 60px;
+      background: linear-gradient(145deg, var(--blue-dark) 0%, #0e3a6a 55%, #1565C0 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #hero::before {
+      content: '';
+      position: absolute;
+      top: -30%;
+      right: -10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    #hero::after {
+      content: '';
+      position: absolute;
+      bottom: -20%;
+      left: -5%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(30,136,229,0.2) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      max-width: 680px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(201,168,76,0.15);
+      border: 1px solid rgba(201,168,76,0.4);
+      color: var(--gold-light);
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 20px;
+      margin-bottom: 28px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--gold-light);
+      border-radius: 50%;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 20px;
+      letter-spacing: -1px;
+    }
+
+    h1 em {
+      font-style: normal;
+      color: var(--gold-light);
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 40px;
+      max-width: 520px;
+      line-height: 1.7;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      color: var(--blue-dark);
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 14px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px rgba(201,168,76,0.4);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(201,168,76,0.5);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.08);
+      color: var(--white);
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 14px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      border: 1.5px solid rgba(255,255,255,0.25);
+      transition: all 0.2s;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.15);
+      border-color: rgba(255,255,255,0.5);
+    }
+
+    /* ── LOGOS / TRUST ── */
+    .trust-bar {
+      background: var(--gray-50);
+      border-top: 1px solid var(--gray-100);
+      border-bottom: 1px solid var(--gray-100);
+      padding: 22px 6%;
+      text-align: center;
+    }
+
+    .trust-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--gray-400);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 18px;
+    }
+
+    .trust-stats {
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .stat-num {
+      font-size: 1.7rem;
+      font-weight: 800;
+      color: var(--blue-dark);
+      line-height: 1;
+    }
+
+    .stat-num span { color: var(--gold); }
+
+    .stat-desc {
+      font-size: 0.8rem;
+      color: var(--gray-400);
+      margin-top: 4px;
+    }
+
+    /* ── SECTIONS ── */
+    section { padding: 90px 6%; }
+
+    .section-label {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 12px;
+    }
+
+    h2 {
+      font-size: clamp(1.7rem, 3.5vw, 2.5rem);
+      font-weight: 800;
+      color: var(--blue-dark);
+      line-height: 1.2;
+      letter-spacing: -0.5px;
+      margin-bottom: 16px;
+    }
+
+    h2 em {
+      font-style: normal;
+      color: var(--blue-light);
+    }
+
+    .section-desc {
+      font-size: 1rem;
+      color: var(--gray-600);
+      max-width: 560px;
+      line-height: 1.75;
+      margin-bottom: 56px;
+    }
+
+    /* ── SERVICES ── */
+    #services { background: var(--white); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .service-card {
+      background: var(--gray-50);
+      border: 1px solid var(--gray-100);
+      border-radius: 16px;
+      padding: 36px 32px;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--blue), var(--gold));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s;
+    }
+
+    .service-card:hover {
+      border-color: rgba(21,101,192,0.2);
+      box-shadow: 0 12px 40px rgba(13,43,78,0.1);
+      transform: translateY(-4px);
+    }
+
+    .service-card:hover::after { transform: scaleX(1); }
+
+    .card-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--blue-dark), var(--blue-light));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      font-size: 22px;
+    }
+
+    .card-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--blue-dark);
+      margin-bottom: 10px;
+    }
+
+    .card-desc {
+      font-size: 0.9rem;
+      color: var(--gray-600);
+      line-height: 1.7;
+    }
+
+    /* ── HOW IT WORKS ── */
+    #how {
+      background: linear-gradient(160deg, var(--blue-dark), #0e3a6a);
+      color: var(--white);
+    }
+
+    #how h2 { color: var(--white); }
+    #how h2 em { color: var(--gold-light); }
+    #how .section-desc { color: rgba(255,255,255,0.65); }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 32px;
+      position: relative;
+    }
+
+    .step {
+      text-align: center;
+      padding: 32px 20px;
+    }
+
+    .step-num {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: rgba(201,168,76,0.15);
+      border: 2px solid var(--gold);
+      color: var(--gold-light);
+      font-weight: 800;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+    }
+
+    .step h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+
+    .step p {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.7;
+    }
+
+    /* ── WHY US ── */
+    #why { background: var(--gray-50); }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .why-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .why-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .why-icon {
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+
+    .why-text h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--blue-dark);
+      margin-bottom: 4px;
+    }
+
+    .why-text p {
+      font-size: 0.88rem;
+      color: var(--gray-600);
+      line-height: 1.6;
+    }
+
+    .why-visual {
+      background: linear-gradient(145deg, var(--blue-dark), #1565C0);
+      border-radius: 20px;
+      padding: 48px 40px;
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .why-visual::before {
+      content: '';
+      position: absolute;
+      top: -40%;
+      right: -20%;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(201,168,76,0.15) 0%, transparent 70%);
+    }
+
+    .why-visual h3 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+      color: var(--white);
+    }
+
+    .why-visual p {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 32px;
+    }
+
+    .metric-row {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .metric {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      padding: 14px 18px;
+    }
+
+    .metric-label { font-size: 0.85rem; color: rgba(255,255,255,0.7); }
+
+    .metric-val {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--gold-light);
+    }
+
+    /* ── CTA ── */
+    #cta {
+      background: linear-gradient(135deg, var(--gold) 0%, #b8922e 100%);
+      text-align: center;
+      padding: 80px 6%;
+    }
+
+    #cta h2 { color: var(--blue-dark); }
+
+    #cta .section-desc { color: rgba(13,43,78,0.7); margin: 0 auto 40px; }
+
+    .btn-dark {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--blue-dark);
+      color: var(--white);
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 16px 34px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.2s;
+      box-shadow: 0 6px 24px rgba(13,43,78,0.35);
+    }
+
+    .btn-dark:hover {
+      background: #0e3a6a;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 32px rgba(13,43,78,0.45);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--gray-900);
+      color: rgba(255,255,255,0.5);
+      padding: 40px 6%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-logo {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    .footer-logo span { color: var(--gold); }
+
+    footer p { font-size: 0.82rem; }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.4);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--gold); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 0 5%; }
+      .nav-links { display: none; }
+      #hero { padding: 90px 5% 50px; }
+      section { padding: 70px 5%; }
+      .why-grid { grid-template-columns: 1fr; }
+      .trust-stats { gap: 32px; }
+      footer { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="logo">
+      <div class="logo-icon">Ax</div>
+      <span class="logo-text">Arix <span>Consulting</span></span>
+    </a>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="#services" data-es="Servicios" data-en="Services">Servicios</a></li>
+        <li><a href="#how" data-es="Proceso" data-en="Process">Proceso</a></li>
+        <li><a href="#why" data-es="¿Por qué nosotros?" data-en="Why Us?">¿Por qué nosotros?</a></li>
+        <li><a href="#cta" data-es="Contacto" data-en="Contact">Contacto</a></li>
+      </ul>
+      <button class="lang-btn" id="langToggle" onclick="toggleLang()">EN</button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-content">
+      <div class="hero-badge" data-es="Soluciones CRM para empresas" data-en="CRM Solutions for Businesses">
+        Soluciones CRM para empresas
+      </div>
+      <h1>
+        <span data-es="Haz crecer tu negocio con <em>sistemas inteligentes</em>" data-en="Grow your business with <em>intelligent systems</em>">
+          Haz crecer tu negocio con <em>sistemas inteligentes</em>
+        </span>
+      </h1>
+      <p class="hero-sub" data-es="En Arix Consulting implementamos plataformas de gestión de clientes que automatizan tu operación, aumentan tus ventas y te dan control total de tu negocio." data-en="At Arix Consulting we implement client management platforms that automate your operations, increase your sales, and give you full control of your business.">
+        En Arix Consulting implementamos plataformas de gestión de clientes que automatizan tu operación, aumentan tus ventas y te dan control total de tu negocio.
+      </p>
+      <div class="hero-ctas">
+        <a href="#cta" class="btn-primary" data-es="📞 Agendar consulta gratuita" data-en="📞 Schedule free consultation">📞 Agendar consulta gratuita</a>
+        <a href="#services" class="btn-secondary" data-es="Ver servicios" data-en="View services">Ver servicios →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <p class="trust-label" data-es="Resultados que hablan por sí solos" data-en="Results that speak for themselves">Resultados que hablan por sí solos</p>
+    <div class="trust-stats">
+      <div class="stat">
+        <div class="stat-num">+30<span>%</span></div>
+        <div class="stat-desc" data-es="Aumento promedio en ventas" data-en="Average increase in sales">Aumento promedio en ventas</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">70<span>%</span></div>
+        <div class="stat-desc" data-es="Reducción de tareas manuales" data-en="Reduction of manual tasks">Reducción de tareas manuales</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">48<span>h</span></div>
+        <div class="stat-desc" data-es="Setup inicial promedio" data-en="Average initial setup">Setup inicial promedio</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">24<span>/7</span></div>
+        <div class="stat-desc" data-es="Soporte continuo" data-en="Continuous support">Soporte continuo</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="section-label" data-es="Lo que hacemos" data-en="What we do">Lo que hacemos</div>
+    <h2 data-es="Servicios diseñados para <em>escalar tu empresa</em>" data-en="Services designed to <em>scale your business</em>">Servicios diseñados para <em>escalar tu empresa</em></h2>
+    <p class="section-desc" data-es="Implementamos, configuramos y gestionamos las herramientas que tu empresa necesita para operar de forma eficiente y profesional." data-en="We implement, configure, and manage the tools your business needs to operate efficiently and professionally.">
+      Implementamos, configuramos y gestionamos las herramientas que tu empresa necesita para operar de forma eficiente y profesional.
+    </p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="card-icon">🗂️</div>
+        <div class="card-title" data-es="Implementación de CRM" data-en="CRM Implementation">Implementación de CRM</div>
+        <div class="card-desc" data-es="Configuramos tu plataforma de gestión de clientes desde cero: pipelines, etapas de venta, contactos y seguimiento automatizado." data-en="We configure your client management platform from scratch: pipelines, sales stages, contacts, and automated follow-ups.">
+          Configuramos tu plataforma de gestión de clientes desde cero: pipelines, etapas de venta, contactos y seguimiento automatizado.
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="card-icon">⚡</div>
+        <div class="card-title" data-es="Automatización de procesos" data-en="Process Automation">Automatización de procesos</div>
+        <div class="card-desc" data-es="Creamos flujos de trabajo automáticos que responden, nutren y convierten leads sin intervención manual." data-en="We create automatic workflows that respond, nurture, and convert leads without manual intervention.">
+          Creamos flujos de trabajo automáticos que responden, nutren y convierten leads sin intervención manual.
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="card-icon">💬</div>
+        <div class="card-title" data-es="Comunicación multicanal" data-en="Multi-channel Communication">Comunicación multicanal</div>
+        <div class="card-desc" data-es="Integra SMS, email, WhatsApp y redes sociales en una sola bandeja de entrada para no perder ningún cliente." data-en="Integrate SMS, email, WhatsApp, and social media into a single inbox so you never miss a client.">
+          Integra SMS, email, WhatsApp y redes sociales en una sola bandeja de entrada para no perder ningún cliente.
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="card-icon">📊</div>
+        <div class="card-title" data-es="Reportes y analítica" data-en="Reports & Analytics">Reportes y analítica</div>
+        <div class="card-desc" data-es="Dashboards personalizados para monitorear el rendimiento de tu equipo de ventas y marketing en tiempo real." data-en="Custom dashboards to monitor your sales and marketing team performance in real time.">
+          Dashboards personalizados para monitorear el rendimiento de tu equipo de ventas y marketing en tiempo real.
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="card-icon">🌐</div>
+        <div class="card-title" data-es="Landing pages & Funnels" data-en="Landing pages & Funnels">Landing pages & Funnels</div>
+        <div class="card-desc" data-es="Diseñamos páginas de captura de leads y embudos de venta optimizados para convertir visitantes en clientes." data-en="We design lead capture pages and sales funnels optimized to convert visitors into customers.">
+          Diseñamos páginas de captura de leads y embudos de venta optimizados para convertir visitantes en clientes.
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="card-icon">🤝</div>
+        <div class="card-title" data-es="Soporte & Consultoría" data-en="Support & Consulting">Soporte & Consultoría</div>
+        <div class="card-desc" data-es="Acompañamos a tu equipo en cada etapa: capacitación, soporte técnico continuo y estrategia de crecimiento." data-en="We accompany your team at every stage: training, continuous technical support, and growth strategy.">
+          Acompañamos a tu equipo en cada etapa: capacitación, soporte técnico continuo y estrategia de crecimiento.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="how">
+    <div class="section-label" data-es="Nuestro proceso" data-en="Our process">Nuestro proceso</div>
+    <h2 data-es="Simple, rápido y <em>sin complicaciones</em>" data-en="Simple, fast and <em>hassle-free</em>">Simple, rápido y <em>sin complicaciones</em></h2>
+    <p class="section-desc" data-es="Desde la primera llamada hasta el lanzamiento, te guiamos en cada paso." data-en="From the first call to launch, we guide you every step of the way.">
+      Desde la primera llamada hasta el lanzamiento, te guiamos en cada paso.
+    </p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3 data-es="Consulta gratuita" data-en="Free consultation">Consulta gratuita</h3>
+        <p data-es="Analizamos tu negocio y entendemos tus metas. Sin compromisos, sin contratos." data-en="We analyze your business and understand your goals. No commitments, no contracts.">Analizamos tu negocio y entendemos tus metas. Sin compromisos, sin contratos.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3 data-es="Diseño a medida" data-en="Custom design">Diseño a medida</h3>
+        <p data-es="Creamos un plan personalizado con las herramientas y automatizaciones que tu empresa necesita." data-en="We create a personalized plan with the tools and automations your business needs.">Creamos un plan personalizado con las herramientas y automatizaciones que tu empresa necesita.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3 data-es="Implementación" data-en="Implementation">Implementación</h3>
+        <p data-es="Configuramos todo por ti. Tu equipo solo tiene que aprender a usar el sistema." data-en="We configure everything for you. Your team just needs to learn how to use the system.">Configuramos todo por ti. Tu equipo solo tiene que aprender a usar el sistema.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h3 data-es="Crecimiento continuo" data-en="Continuous growth">Crecimiento continuo</h3>
+        <p data-es="Monitoreamos resultados y optimizamos tu sistema mes a mes para que siempre estés creciendo." data-en="We monitor results and optimize your system month by month so you're always growing.">Monitoreamos resultados y optimizamos tu sistema mes a mes para que siempre estés creciendo.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section id="why">
+    <div class="section-label" data-es="¿Por qué Arix?" data-en="Why Arix?">¿Por qué Arix?</div>
+    <div class="why-grid">
+      <div>
+        <h2 data-es="Más que una agencia, <em>tu socio de crecimiento</em>" data-en="More than an agency, <em>your growth partner</em>">Más que una agencia, <em>tu socio de crecimiento</em></h2>
+        <p class="section-desc" data-es="No solo instalamos software. Nos aseguramos de que funcione para tu negocio específico." data-en="We don't just install software. We make sure it works for your specific business.">
+          No solo instalamos software. Nos aseguramos de que funcione para tu negocio específico.
+        </p>
+        <ul class="why-list">
+          <li class="why-item">
+            <div class="why-icon">✓</div>
+            <div class="why-text">
+              <h4 data-es="Especialistas en CRM" data-en="CRM Specialists">Especialistas en CRM</h4>
+              <p data-es="Experiencia profunda en plataformas de gestión de clientes y automatización de negocios." data-en="Deep expertise in client management platforms and business automation.">Experiencia profunda en plataformas de gestión de clientes y automatización de negocios.</p>
+            </div>
+          </li>
+          <li class="why-item">
+            <div class="why-icon">✓</div>
+            <div class="why-text">
+              <h4 data-es="Setup en 48 horas" data-en="Setup in 48 hours">Setup en 48 horas</h4>
+              <p data-es="Ponemos tu sistema a funcionar rápidamente para que empieces a ver resultados cuanto antes." data-en="We get your system running quickly so you start seeing results as soon as possible.">Ponemos tu sistema a funcionar rápidamente para que empieces a ver resultados cuanto antes.</p>
+            </div>
+          </li>
+          <li class="why-item">
+            <div class="why-icon">✓</div>
+            <div class="why-text">
+              <h4 data-es="Soporte humano, no bots" data-en="Human support, not bots">Soporte humano, no bots</h4>
+              <p data-es="Tienes acceso directo a nuestro equipo cuando lo necesitas. Siempre hay alguien disponible." data-en="You have direct access to our team when you need it. There's always someone available.">Tienes acceso directo a nuestro equipo cuando lo necesitas. Siempre hay alguien disponible.</p>
+            </div>
+          </li>
+          <li class="why-item">
+            <div class="why-icon">✓</div>
+            <div class="why-text">
+              <h4 data-es="ROI medible" data-en="Measurable ROI">ROI medible</h4>
+              <p data-es="Establecemos métricas claras desde el inicio para que siempre sepas qué retorno estás obteniendo." data-en="We set clear metrics from the start so you always know what return you're getting.">Establecemos métricas claras desde el inicio para que siempre sepas qué retorno estás obteniendo.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="why-visual">
+        <h3 data-es="Tu negocio, optimizado" data-en="Your business, optimized">Tu negocio, optimizado</h3>
+        <p data-es="Métricas típicas de clientes en los primeros 90 días" data-en="Typical client metrics in the first 90 days">Métricas típicas de clientes en los primeros 90 días</p>
+        <div class="metric-row">
+          <div class="metric">
+            <span class="metric-label" data-es="Respuesta a leads" data-en="Lead response time">Respuesta a leads</span>
+            <span class="metric-val">5 min → automático</span>
+          </div>
+          <div class="metric">
+            <span class="metric-label" data-es="Tasa de conversión" data-en="Conversion rate">Tasa de conversión</span>
+            <span class="metric-val">+35%</span>
+          </div>
+          <div class="metric">
+            <span class="metric-label" data-es="Leads sin seguimiento" data-en="Leads without follow-up">Leads sin seguimiento</span>
+            <span class="metric-val">0%</span>
+          </div>
+          <div class="metric">
+            <span class="metric-label" data-es="Tiempo en tareas manuales" data-en="Time on manual tasks">Tiempo en tareas manuales</span>
+            <span class="metric-val">-70%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="cta">
+    <div class="section-label" style="color: var(--blue-dark); opacity: 0.6;" data-es="Da el siguiente paso" data-en="Take the next step">Da el siguiente paso</div>
+    <h2 data-es="¿Listo para transformar tu negocio?" data-en="Ready to transform your business?">¿Listo para transformar tu negocio?</h2>
+    <p class="section-desc" data-es="Agenda una llamada gratuita de 30 minutos y descubre cómo Arix Consulting puede ayudarte a crecer." data-en="Schedule a free 30-minute call and discover how Arix Consulting can help you grow.">
+      Agenda una llamada gratuita de 30 minutos y descubre cómo Arix Consulting puede ayudarte a crecer.
+    </p>
+    <a href="mailto:admin@arixconsulting.com" class="btn-dark" data-es="📩 Agendar consulta gratuita" data-en="📩 Schedule free consultation">📩 Agendar consulta gratuita</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">Arix <span>Consulting</span></div>
+    <p data-es="© 2025 Arix Consulting. Todos los derechos reservados." data-en="© 2025 Arix Consulting. All rights reserved.">© 2025 Arix Consulting. Todos los derechos reservados.</p>
+    <ul class="footer-links">
+      <li><a href="mailto:admin@arixconsulting.com">Email</a></li>
+    </ul>
+  </footer>
+
+  <script>
+    let lang = 'es';
+
+    function toggleLang() {
+      lang = lang === 'es' ? 'en' : 'es';
+      document.getElementById('langToggle').textContent = lang === 'es' ? 'EN' : 'ES';
+      document.documentElement.lang = lang;
+      applyLang();
+    }
+
+    function applyLang() {
+      document.querySelectorAll('[data-es]').forEach(el => {
+        const val = el.getAttribute('data-' + lang);
+        if (val) el.innerHTML = val;
+      });
+    }
+
+    // Smooth nav highlight
+    const sections = document.querySelectorAll('section[id], div[id]');
+    const links = document.querySelectorAll('.nav-links a');
+
+    window.addEventListener('scroll', () => {
+      let cur = '';
+      sections.forEach(s => {
+        if (window.scrollY >= s.offsetTop - 100) cur = s.id;
+      });
+      links.forEach(a => {
+        a.style.color = a.getAttribute('href') === '#' + cur ? 'var(--blue)' : '';
+      });
+    });
+  </script>
+</body>
+</html>
